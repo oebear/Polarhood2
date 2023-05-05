@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.IO;
+using System.Globalization;
 using System.Reflection;
 using System.Windows.Forms;
-using System.Globalization;
 
-
-namespace Polarhood
+namespace polarhood2
 {
     public partial class Form1 : Form
     {
@@ -17,25 +12,10 @@ namespace Polarhood
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            panel2.BringToFront();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox3_Click(object sender, EventArgs e)
-        {
-            panel3.BringToFront();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             string ticker1 = textBox1.Text;
-            string pythonFilePath = "C:\\Users\\ohtoa\\vscodeapps\\price1.py";
+            string pythonFilePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\price1.py";
             string arguments = ticker1; // replace with your own arguments
 
             ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -47,7 +27,7 @@ namespace Polarhood
             process.StartInfo = startInfo;
             process.Start();
             List<string> outputLines = new List<string>();
-            string line;
+            string? line;
             while ((line = process.StandardOutput.ReadLine()) != null)
             {
                 outputLines.Add(line);
@@ -56,20 +36,21 @@ namespace Polarhood
             label8.Text = outputLines[1];
             label7.Text = outputLines[0];
             outputLines.RemoveRange(0, 2);
-            foreach(string a in outputLines) {
+            foreach (string a in outputLines)
+            {
                 textBox2.Text += a;
-            
+
             }
 
 
-            
+
 
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string ticker = textBox1.Text;  
+            string ticker = textBox1.Text;
             int ammount = Decimal.ToInt32(numericUpDown1.Value);
             string name = label8.Text;
             decimal price = decimal.Parse(label7.Text, CultureInfo.InvariantCulture);
@@ -86,12 +67,8 @@ namespace Polarhood
                 }
                 fs.Close();
             }
+            panel4reflesh();
 
-
-            Button sell1 = new Button();
-            sell1.Text = "Sell all";
-            sell1.Location = new Point(27, 27);
-            panel4.Controls.Add(sell1);
 
         }
 
@@ -100,6 +77,7 @@ namespace Polarhood
             // values
             int ticker1 = 0;
             int distance1 = 13;
+            int distance2 = 12;
             int lines1 = 0;
             // path of the txt file where all your stocks and their values and stored
             string path1 = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\data1.txt";
@@ -114,20 +92,24 @@ namespace Polarhood
                 }
                 int stockammount = lines1 / 4;
                 for (int i = stockammount; i > 0; i--)
-                {               
+                {
                     // creating buttons and labels to my stocks section
-                    Label ticker= new Label();
+                    Label ticker = new Label();
                     ticker.Text = stockdata[ticker1];
                     ticker.Location = new Point(13, distance1);
+                    ticker.Size = new(60, 22);
+                    ticker.Tag = stockdata[ticker1];
                     panel4.Controls.Add(ticker);
 
                     Button sell2 = new Button();
                     sell2.Text = "Sell";
-                    sell2.Location = new Point(109, distance1);
-                    sell2.Click += new EventHandler(sell2_Click);    
+                    sell2.Location = new Point(100, distance2);
+                    sell2.Click += sell2_Click;
+                    sell2.Tag = stockdata[ticker1];
                     panel4.Controls.Add(sell2);
 
                     distance1 += 26;
+                    distance2 += 26;
                     ticker1 += 4;
                 }
             }
@@ -135,18 +117,86 @@ namespace Polarhood
             {
                 using (FileStream fs = File.Create(path1))
                 {
-                    
+
                 }
             }
-            
+
 
         }
 
-        private void sell2_Click(object sender, EventArgs e)
+        private void sell2_Click(object? sender, EventArgs e)
         {
             // This code will execute when any of the sell buttons are clicked.
-            Console.WriteLine();
 
+            if (sender is Button sell2 && sell2.Tag is string ticker)
+            {
+                
+                // Remove the ticker from the file
+                RemoveTickerFromFile(ticker);
+
+            }
+
+
+
+        }
+        private void panel4reflesh()
+        {
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\data1.txt";
+            // clears the panel of old values
+            panel4.Controls.Clear();
+            // values
+            int ticker1 = 0;
+            int distance1 = 13;
+            int distance2 = 12;
+            int lines1 = 0;
+            string[] stockdata = File.ReadAllLines(filePath);
+            foreach (string a in stockdata)
+            {
+                lines1 += 1;
+
+            }
+            int stockammount = lines1 / 4;
+            for (int i = stockammount; i > 0; i--)
+            {
+                // creating buttons and labels to my stocks section
+                Label ticker = new Label();
+                ticker.Text = stockdata[ticker1];
+                ticker.Location = new Point(13, distance1);
+                ticker.Size = new(60, 22);
+                ticker.Tag = stockdata[ticker1];
+                panel4.Controls.Add(ticker);
+
+                Button sell2 = new Button();
+                sell2.Text = "Sell";
+                sell2.Location = new Point(100, distance2);
+                sell2.Click += sell2_Click;
+                sell2.Tag = stockdata[ticker1];
+                panel4.Controls.Add(sell2);
+
+                distance1 += 26;
+                distance2 += 26;
+                ticker1 += 4;
+            }
+        }
+
+        private void RemoveTickerFromFile(string tickerToRemove)
+        {
+            // Load the tickers from the file
+            string filePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\data1.txt";
+            List<string> tickers = File.ReadAllLines(filePath).ToList();
+
+            // Remove the ticker from the list
+            int position = tickers.IndexOf(tickerToRemove);
+            int position2 = position + 3;
+            int count = position2 - position;
+            MessageBox.Show(tickers[position]);
+            MessageBox.Show(tickers[position2]);
+            tickers.RemoveRange(position, count);
+
+            // Write the updated list of tickers back to the file
+            File.WriteAllLines(filePath, tickers);
+            // call a panel4 reflesh
+            panel4reflesh();
         }
     }
 }
