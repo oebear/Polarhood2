@@ -31,13 +31,12 @@
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
+            label2 = new Label();
             numericUpDown1 = new NumericUpDown();
             button2 = new Button();
             panel5 = new Panel();
             textBox2 = new TextBox();
             panel4 = new Panel();
-            label12 = new Label();
-            label11 = new Label();
             label10 = new Label();
             label9 = new Label();
             label8 = new Label();
@@ -48,12 +47,10 @@
             button1 = new Button();
             label3 = new Label();
             textBox1 = new TextBox();
-            label2 = new Label();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             panel5.SuspendLayout();
-            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -99,6 +96,16 @@
             panel3.Size = new Size(800, 562);
             panel3.TabIndex = 2;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Consolas", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(503, 13);
+            label2.Name = "label2";
+            label2.Size = new Size(80, 22);
+            label2.TabIndex = 14;
+            label2.Text = "Balance";
+            // 
             // numericUpDown1
             // 
             numericUpDown1.Location = new Point(171, 130);
@@ -141,31 +148,11 @@
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel4.AutoScroll = true;
-            panel4.Controls.Add(label12);
-            panel4.Controls.Add(label11);
             panel4.Location = new Point(588, 91);
             panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
             panel4.Size = new Size(200, 456);
             panel4.TabIndex = 10;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(30, 388);
-            label12.Name = "label12";
-            label12.Size = new Size(51, 20);
-            label12.TabIndex = 1;
-            label12.Text = "stock2";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Location = new Point(30, 311);
-            label11.Name = "label11";
-            label11.Size = new Size(43, 20);
-            label11.TabIndex = 0;
-            label11.Text = "stock";
             // 
             // label10
             // 
@@ -269,16 +256,6 @@
             textBox1.TabIndex = 0;
             textBox1.Text = "Ticker";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Consolas", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(503, 13);
-            label2.Name = "label2";
-            label2.Size = new Size(80, 22);
-            label2.TabIndex = 14;
-            label2.Text = "Balance";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -298,8 +275,6 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -317,8 +292,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;

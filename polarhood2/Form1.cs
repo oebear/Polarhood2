@@ -130,7 +130,7 @@ namespace polarhood2
 
             if (sender is Button sell2 && sell2.Tag is string ticker)
             {
-                
+
                 // Remove the ticker from the file
                 RemoveTickerFromFile(ticker);
 
