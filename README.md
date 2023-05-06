@@ -5,11 +5,12 @@ is displayed and used to simulate stock trading.
 ![image](https://user-images.githubusercontent.com/52967830/236514205-5406c622-c980-4697-ab3d-3f06fe1cda57.png)
 
 # required
--beautifulsoup4 python packaga
--.net 7
+- beautifulsoup4 python package
+
+- .NET 7
 
 # improvements from polarhood:
-no more apis and trading.
+- no more api requests and supports simulated trading.
 # updates
 2.0 new ui, ...
 
