@@ -37,7 +37,8 @@ namespace polarhood2
             outputLines.RemoveRange(0, 2);
             foreach (string a in outputLines)
             {
-                textBox2.Text += a;
+               
+                textBox2.Text += Environment.NewLine + Environment.NewLine + a;
 
             }
 
