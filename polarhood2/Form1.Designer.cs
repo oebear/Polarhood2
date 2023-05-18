@@ -31,6 +31,7 @@
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
+            label15 = new Label();
             label17 = new Label();
             label16 = new Label();
             label14 = new Label();
@@ -53,7 +54,6 @@
             button1 = new Button();
             label3 = new Label();
             textBox1 = new TextBox();
-            label15 = new Label();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -110,10 +110,19 @@
             panel3.Size = new Size(800, 562);
             panel3.TabIndex = 2;
             // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(757, 67);
+            label15.Name = "label15";
+            label15.Size = new Size(31, 20);
+            label15.TabIndex = 22;
+            label15.Text = "sell";
+            // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(636, 67);
+            label17.Location = new Point(622, 67);
             label17.Name = "label17";
             label17.Size = new Size(57, 20);
             label17.TabIndex = 21;
@@ -123,7 +132,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Consolas", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label16.Location = new Point(438, 91);
+            label16.Location = new Point(419, 91);
             label16.Name = "label16";
             label16.Size = new Size(80, 22);
             label16.TabIndex = 20;
@@ -142,7 +151,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(575, 67);
+            label13.Location = new Point(565, 67);
             label13.Name = "label13";
             label13.Size = new Size(42, 20);
             label13.TabIndex = 17;
@@ -151,7 +160,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(524, 67);
+            label12.Location = new Point(505, 67);
             label12.Name = "label12";
             label12.Size = new Size(45, 20);
             label12.TabIndex = 16;
@@ -219,10 +228,10 @@
             // 
             panel4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             panel4.AutoScroll = true;
-            panel4.Location = new Point(524, 91);
+            panel4.Location = new Point(505, 91);
             panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(264, 456);
+            panel4.Size = new Size(283, 456);
             panel4.TabIndex = 10;
             // 
             // label10
@@ -326,15 +335,6 @@
             textBox1.Size = new Size(101, 26);
             textBox1.TabIndex = 0;
             textBox1.Text = "Ticker";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Location = new Point(757, 67);
-            label15.Name = "label15";
-            label15.Size = new Size(31, 20);
-            label15.TabIndex = 22;
-            label15.Text = "sell";
             // 
             // Form1
             // 

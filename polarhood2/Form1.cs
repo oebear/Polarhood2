@@ -52,6 +52,7 @@ namespace polarhood2
             // values
             string ticker = textBox1.Text;
             int ammount = Decimal.ToInt32(numericUpDown1.Value);
+            string ammount3 = (numericUpDown1.Value).ToString();
             string name = label8.Text;
             int change = 0;
             decimal price = decimal.Parse(label7.Text, CultureInfo.InvariantCulture);
@@ -59,12 +60,58 @@ namespace polarhood2
             string path1 = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\data1.txt";
             string path2 = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\data2.txt";
             string[] mymoney = File.ReadAllLines(path2);
+            List<string> check = File.ReadAllLines(path1).ToList();
             decimal mymoney2 = Decimal.Parse(mymoney[0], NumberStyles.AllowDecimalPoint, CultureInfo.CreateSpecificCulture("de-DE"));
-            if (mymoney2 >= price2 && price2 != 0)
+            int variable = 0;
+            decimal change2 = 0;
+
+
+            if (check.Contains(ticker) == true && mymoney2 >= price2 && price2 != 0)
+            {
+
+                int position = check.IndexOf(ticker);
+                if (decimal.Parse(check[position + 4]) != 0)
+                {
+                    change2 = decimal.Parse(check[position + 3]) * decimal.Parse(check[position + 4]);
+                }
+                decimal price3 = decimal.Parse(check[position + 2]) * decimal.Parse(check[position + 3]) + change2;
+                decimal price4 = price3 + price2;
+                decimal ammount2 = price4 / (Decimal.Parse(check[position + 3]) + Decimal.Parse(ammount3));
+                int ammount4 = ammount + Convert.ToInt32(check[position + 3]);
+                check[position + 3] = ammount4.ToString();
+                check[position + 2] = price.ToString();
+                check[position + 4] = "0";
+                Debug.WriteLine(ammount2);
+                Debug.WriteLine(price4);
+                Debug.WriteLine(price3);
+                Debug.WriteLine(change2);
+                Debug.WriteLine(price);
+                Debug.WriteLine(ammount4);
+                MessageBox.Show(price3.ToString());
+                using (FileStream b = new FileStream(path1, FileMode.Create))
+                {
+                    using (StreamWriter w = new StreamWriter(b))
+                    {
+                        foreach (string a in check)
+                        {
+                            w.WriteLine(a);
+
+                        }
+                        w.Close();
+                    }
+                    b.Close();
+
+                }
+                variable = 1;
+                panel4reflesh();
+            }
+
+            if (mymoney2 >= price2 && price2 != 0 && variable == 0)
             {
                 // saving stock values
                 using (FileStream fs = new FileStream(path1, FileMode.Append))
                 {
+
                     using (StreamWriter w = new StreamWriter(fs))
                     {
                         w.WriteLine(ticker);
@@ -91,7 +138,7 @@ namespace polarhood2
                 // refleshing My stocks panel
                 panel4reflesh();
             }
-            else
+            if (mymoney2 <= price2 && price2 == 0 && variable == 0)
             {
                 MessageBox.Show("you are too poor or you bought 0 stock");
             }
@@ -175,6 +222,7 @@ namespace polarhood2
                 lines1 += 1;
 
             }
+
             int stockammount = lines1 / 5;
             for (int i = stockammount; i > 0; i--)
             {
@@ -200,16 +248,30 @@ namespace polarhood2
                 change.Tag = stockdata[ticker1];
                 panel4.Controls.Add(change);
 
+                PictureBox pictureBox1 = new PictureBox();
+                pictureBox1.Size = new(20, 20);
+                pictureBox1.Location = new Point(175, distance1);
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                if (Decimal.Parse(stockdata[change1], CultureInfo.CreateSpecificCulture("de-DE")) > 0)
+                {
+                    pictureBox1.Image = Properties.Resources.icons8_up_30;
+                }
+                if (Decimal.Parse(stockdata[change1], CultureInfo.CreateSpecificCulture("de-DE")) < 0)
+                {
+                    pictureBox1.Image = Properties.Resources.icons8_down_30;
+                }
+                panel4.Controls.Add(pictureBox1);
+
                 Label ammount = new Label();
                 ammount.Text = stockdata[ammount1];
-                ammount.Location = new Point(175, distance1);
+                ammount.Location = new Point(195, distance1);
                 ammount.Size = new(25, 25);
                 ammount.Tag = stockdata[ticker1];
                 panel4.Controls.Add(ammount);
 
                 Button sell2 = new Button();
                 sell2.Text = "Sell";
-                sell2.Location = new Point(200, distance2);
+                sell2.Location = new Point(220, distance2);
                 sell2.Size = new(60, 25);
                 sell2.Click += sell2_Click;
                 sell2.Tag = stockdata[ticker1];
