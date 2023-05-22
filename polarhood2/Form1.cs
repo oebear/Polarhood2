@@ -37,7 +37,7 @@ namespace polarhood2
             outputLines.RemoveRange(0, 2);
             foreach (string a in outputLines)
             {
-               
+
                 textBox2.Text += Environment.NewLine + Environment.NewLine + a;
 
             }
@@ -230,28 +230,28 @@ namespace polarhood2
                 // creating buttons and labels to my stocks section
                 Label ticker = new Label();
                 ticker.Text = stockdata[ticker1];
-                ticker.Location = new Point(2, distance1);
-                ticker.Size = new(60, 25);
+                ticker.Location = new Point(0, distance1);
+                ticker.Size = new(panel4.Width, 25);
                 ticker.Tag = stockdata[ticker1];
                 panel4.Controls.Add(ticker);
 
                 Label price = new Label();
                 price.Text = stockdata[price1];
-                price.Location = new Point(60, distance1);
-                price.Size = new(55, 25);
+                price.Location = new Point(0, distance1);
+                price.Size = new(panel1.Width, 25);
                 price.Tag = stockdata[ticker1];
-                panel4.Controls.Add(price);
+                panel1.Controls.Add(price);
 
                 Label change = new Label();
                 change.Text = stockdata[change1];
-                change.Location = new Point(110, distance1);
-                change.Size = new(60, 25);
+                change.Location = new Point(0, distance1);
+                change.Size = new(panel6.Width, 25);
                 change.Tag = stockdata[ticker1];
-                panel4.Controls.Add(change);
+                panel6.Controls.Add(change);
 
                 PictureBox pictureBox1 = new PictureBox();
-                pictureBox1.Size = new(20, 20);
-                pictureBox1.Location = new Point(175, distance1);
+                pictureBox1.Size = new(panel9.Width, 20);
+                pictureBox1.Location = new Point(0, distance1);
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 if (Decimal.Parse(stockdata[change1], CultureInfo.CreateSpecificCulture("de-DE")) > 0)
                 {
@@ -261,22 +261,22 @@ namespace polarhood2
                 {
                     pictureBox1.Image = Properties.Resources.icons8_down_30;
                 }
-                panel4.Controls.Add(pictureBox1);
+                panel9.Controls.Add(pictureBox1);
 
                 Label ammount = new Label();
                 ammount.Text = stockdata[ammount1];
-                ammount.Location = new Point(195, distance1);
-                ammount.Size = new(25, 25);
+                ammount.Location = new Point(0, distance1);
+                ammount.Size = new(panel7.Width, 25);
                 ammount.Tag = stockdata[ticker1];
-                panel4.Controls.Add(ammount);
+                panel7.Controls.Add(ammount);
 
                 Button sell2 = new Button();
                 sell2.Text = "Sell";
-                sell2.Location = new Point(220, distance2);
-                sell2.Size = new(60, 25);
+                sell2.Location = new Point(0, distance2);
+                sell2.Size = new(panel8.Width, 25);
                 sell2.Click += sell2_Click;
                 sell2.Tag = stockdata[ticker1];
-                panel4.Controls.Add(sell2);
+                panel8.Controls.Add(sell2);
                 ticker1 += 5;
                 price1 += 5;
                 ammount1 += 5;

@@ -31,6 +31,11 @@
             label1 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
+            panel9 = new Panel();
+            panel8 = new Panel();
+            panel7 = new Panel();
+            panel6 = new Panel();
+            panel1 = new Panel();
             label15 = new Label();
             label17 = new Label();
             label16 = new Label();
@@ -81,6 +86,11 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(panel9);
+            panel3.Controls.Add(panel8);
+            panel3.Controls.Add(panel7);
+            panel3.Controls.Add(panel6);
+            panel3.Controls.Add(panel1);
             panel3.Controls.Add(label15);
             panel3.Controls.Add(label17);
             panel3.Controls.Add(label16);
@@ -110,6 +120,41 @@
             panel3.Size = new Size(800, 562);
             panel3.TabIndex = 2;
             // 
+            // panel9
+            // 
+            panel9.Location = new Point(676, 91);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(28, 457);
+            panel9.TabIndex = 28;
+            // 
+            // panel8
+            // 
+            panel8.Location = new Point(749, 91);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(48, 457);
+            panel8.TabIndex = 27;
+            // 
+            // panel7
+            // 
+            panel7.Location = new Point(703, 91);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(48, 457);
+            panel7.TabIndex = 26;
+            // 
+            // panel6
+            // 
+            panel6.Location = new Point(618, 91);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(60, 456);
+            panel6.TabIndex = 25;
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(565, 91);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(54, 456);
+            panel1.TabIndex = 24;
+            // 
             // label15
             // 
             label15.AutoSize = true;
@@ -122,7 +167,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(622, 67);
+            label17.Location = new Point(613, 67);
             label17.Name = "label17";
             label17.Size = new Size(57, 20);
             label17.TabIndex = 21;
@@ -142,7 +187,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(705, 67);
+            label14.Location = new Point(697, 68);
             label14.Name = "label14";
             label14.Size = new Size(46, 20);
             label14.TabIndex = 18;
@@ -199,7 +244,7 @@
             button2.Location = new Point(218, 130);
             button2.Margin = new Padding(3, 4, 3, 4);
             button2.Name = "button2";
-            button2.Size = new Size(75, 29);
+            button2.Size = new Size(58, 29);
             button2.TabIndex = 12;
             button2.Text = "Buy";
             button2.UseVisualStyleBackColor = true;
@@ -231,7 +276,7 @@
             panel4.Location = new Point(505, 91);
             panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(283, 456);
+            panel4.Size = new Size(63, 456);
             panel4.TabIndex = 10;
             // 
             // label10
@@ -358,24 +403,24 @@
             ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.Button button2;
+        private Label label1;
+        private Panel panel2;
+        private Panel panel3;
+        private Button button1;
+        private Label label3;
+        private TextBox textBox1;
+        private Label label4;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Panel panel4;
+        private Label label10;
+        private Label label9;
+        private Panel panel5;
+        private TextBox textBox2;
+        private NumericUpDown numericUpDown1;
+        private Button button2;
 
         #endregion
 
@@ -387,5 +432,10 @@
         private Label label17;
         private Label label16;
         private Label label15;
+        private Panel panel7;
+        private Panel panel6;
+        private Panel panel1;
+        private Panel panel8;
+        private Panel panel9;
     }
 }
