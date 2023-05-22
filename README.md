@@ -9,7 +9,6 @@ is displayed and used to simulate stock trading.
 # required
 - beautifulsoup4 python package:
 to install you need python and then type pip install beautifulsoup4 in cmd
-- SCREEN RESOLUTION TO BE SET AT 2560x1440(otherwise sizes of textboxes and buttons display badly)
 
 - .NET 7:
 link to install: [here](https://dotnet.microsoft.com/en-us/download)
